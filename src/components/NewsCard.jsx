@@ -1,8 +1,10 @@
 import React from "react";
 import { FaEye, FaStar, FaShareAlt, FaRegBookmark } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
-  const { title, author, thumbnail_url, rating, total_view, details } = news;
+  const { title, author, thumbnail_url, rating, total_view, details, id } =
+    news;
 
   return (
     <div className=" shadow-sm hover:shadow-md transition bg-white p-4">
@@ -39,9 +41,12 @@ const NewsCard = ({ news }) => {
 
       {/* Details */}
       <p className="text-sm text-gray-600 mt-3 line-clamp-3">{details}</p>
-      <p className="text-sm text-blue-500 font-medium cursor-pointer mt-1">
+      <Link
+        to={`/news-details/${id}`}
+        className="text-sm text-blue-500 font-medium cursor-pointer mt-1"
+      >
         Read More
-      </p>
+      </Link>
 
       {/* Footer: stars + views */}
       <div className="flex justify-between items-center mt-4 text-sm text-gray-700">
